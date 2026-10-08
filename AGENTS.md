@@ -65,7 +65,12 @@ If necessary, edit this file to ensure it accurately reflects the current state 
 * scripts/nestle: Made with Nestlé scraper and refresh workflow.
  * scripts/nestle/scrape.py: Crawls madewithnestle.ca (sitemap + allowlist), saves raw HTML to `scrape_output/nestle/raw/` (gitignored) and clean Markdown to `data/nestle/`, plus `scrape_output/nestle/manifest.json`.
  * scripts/nestle/scrape_config.json: Base URL, allow/deny patterns, rate limit, max pages, output folders.
- * scripts/nestle/refresh.sh: Re-scrape and re-ingest in one command.
+ * scripts/nestle/extract_entities.py: Builds the knowledge graph (Brand, Product, Recipe, Ingredient, Allergen nodes and their edges) from `data/nestle/` + raw HTML, writing `scrape_output/nestle/graph.json`. Rule-based, no LLM calls.
+ * scripts/nestle/graph_config.json: Brand display names/aliases, non-brand sections, and the allergen whitelist used by extraction.
+ * scripts/nestle/refresh.sh: Re-scrape, rebuild the graph, and re-ingest in one command.
+* app/backend/graphrag: GraphRAG module.
+ * app/backend/graphrag/schema.py: `Node`, `Edge`, `KnowledgeGraph` (JSON save/load, neighbors) and the allowed `NODE_TYPES` / `EDGE_TYPES`.
+ * app/backend/graphrag/extract.py: Pluggable extractors (`EXTRACTORS` list). To add an entity type: register it in `schema.py`, write an extractor `(page, ctx) -> None`, append it to `EXTRACTORS`, and add a test in `tests/test_graphrag_extract.py`.
 * data/nestle: Scraped Nestlé pages (one Markdown file per URL, each with a `Source URL:` line). This is the primary knowledge base.
 * samples/data: Original Zava/Northwind sample documents from the upstream template. Not ingested; kept for tests.
 
