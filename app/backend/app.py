@@ -93,6 +93,9 @@ from core.authentication import AuthenticationHelper
 from core.sessionhelper import create_session_id
 from decorators import authenticated, authenticated_path
 from error import error_dict, error_response
+from graphrag.api import CONFIG_GRAPH_STORE, graph_bp
+from graphrag.retrieve import GraphRetriever
+from graphrag.store import DEFAULT_GRAPH_PATH, GraphStore
 from prepdocs import (
     OpenAIHost,
     setup_embeddings_service,
@@ -304,6 +307,7 @@ def config():
             "ragSendImageSources": current_app.config[CONFIG_RAG_SEND_IMAGE_SOURCES],
             "webSourceEnabled": current_app.config[CONFIG_WEB_SOURCE_ENABLED],
             "sharepointSourceEnabled": current_app.config[CONFIG_SHAREPOINT_SOURCE_ENABLED],
+            "showGraphOption": CONFIG_GRAPH_STORE in current_app.config,
         }
     )
 
@@ -712,6 +716,13 @@ async def setup_clients():
 
     prompt_manager = PromptManager()
 
+    graph_retriever = None
+    if os.getenv("USE_GRAPHRAG", "true").lower() == "true" and DEFAULT_GRAPH_PATH.exists():
+        overlay_path = Path(os.getenv("GRAPH_OVERLAY_PATH", DEFAULT_GRAPH_PATH.with_name("graph_overlay.json")))
+        graph_store = GraphStore.load(DEFAULT_GRAPH_PATH, overlay_path)
+        current_app.config[CONFIG_GRAPH_STORE] = graph_store
+        graph_retriever = GraphRetriever(graph_store)
+
     # ChatReadRetrieveReadApproach is used by /chat for multi-turn conversation
     current_app.config[CONFIG_CHAT_APPROACH] = ChatReadRetrieveReadApproach(
         search_client=search_client,
@@ -742,6 +753,7 @@ async def setup_clients():
         use_web_source=current_app.config[CONFIG_WEB_SOURCE_ENABLED],
         use_sharepoint_source=current_app.config[CONFIG_SHAREPOINT_SOURCE_ENABLED],
         retrieval_reasoning_effort=AGENTIC_KNOWLEDGEBASE_REASONING_EFFORT,
+        graph_retriever=graph_retriever,
     )
 
 
@@ -758,6 +770,7 @@ def create_app():
     app = Quart(__name__)
     app.register_blueprint(bp)
     app.register_blueprint(chat_history_cosmosdb_bp)
+    app.register_blueprint(graph_bp)
 
     if os.getenv("APPLICATIONINSIGHTS_CONNECTION_STRING"):
         app.logger.info("APPLICATIONINSIGHTS_CONNECTION_STRING is set, enabling Azure Monitor")

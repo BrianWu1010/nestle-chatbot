@@ -170,3 +170,4 @@ Nestle_AI_Technical_Test.pdf
 
 # Nestlé scraper raw HTML cache
 scrape_output/**/raw/
+app/backend/graphrag/data/graph_overlay.json

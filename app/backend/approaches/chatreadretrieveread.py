@@ -22,6 +22,7 @@ from approaches.approach import (
     ThoughtStep,
 )
 from approaches.promptmanager import PromptManager
+from graphrag.retrieve import GraphRetriever, sourcefile_filter
 from prepdocslib.blobmanager import AdlsBlobManager, BlobManager
 from prepdocslib.embeddings import ImageEmbeddings
 
@@ -66,7 +67,9 @@ class ChatReadRetrieveReadApproach(Approach):
         use_web_source: bool = False,
         use_sharepoint_source: bool = False,
         retrieval_reasoning_effort: Optional[str] = None,
+        graph_retriever: Optional[GraphRetriever] = None,
     ):
+        self.graph_retriever = graph_retriever
         self.search_client = search_client
         self.search_index_name = search_index_name
         self.knowledgebase_model = knowledgebase_model
@@ -277,6 +280,7 @@ class ChatReadRetrieveReadApproach(Approach):
             user_template_variables={
                 "user_query": original_user_query,
                 "text_sources": extra_info.data_points.text,
+                "graph_facts": extra_info.graph_facts,
             },
             user_image_sources=extra_info.data_points.images,
             past_messages=messages[:-1],
@@ -375,6 +379,33 @@ class ChatReadRetrieveReadApproach(Approach):
             access_token,
         )
 
+        # STEP 2b (optional): GraphRAG - match entities, expand neighbors, pull chunks from linked pages
+        graph_thoughts: list[ThoughtStep] = []
+        graph_facts: Optional[list[str]] = None
+        if self.graph_retriever and overrides.get("use_graph", True):
+            graph_context = self.graph_retriever.expand(f"{original_user_query} {query_text}")
+            if graph_context.seeds:
+                graph_facts = graph_context.facts
+                seen_ids = {doc.id for doc in results}
+                linked = await self.search(
+                    top,
+                    query_text,
+                    " and ".join(f for f in [search_index_filter, sourcefile_filter(graph_context.source_files)] if f),
+                    vectors,
+                    use_text_search,
+                    use_vector_search,
+                    use_semantic_ranker,
+                    use_semantic_captions,
+                    minimum_search_score,
+                    minimum_reranker_score,
+                    use_query_rewriting,
+                    access_token,
+                )
+                results = results + [doc for doc in linked if doc.id not in seen_ids]
+                graph_thoughts.append(
+                    ThoughtStep("Knowledge graph expansion", graph_context.serialize(), {"linked_chunks": len(linked)})
+                )
+
         # STEP 3: Generate a contextual and content specific answer using the search results and chat history
         data_points = await self.get_sources_content(
             results,
@@ -383,6 +414,13 @@ class ChatReadRetrieveReadApproach(Approach):
             download_image_sources=send_image_sources,
             user_oid=auth_claims.get("oid"),
         )
+        if graph_facts:
+            citations = data_points.citations or []
+            for fact in graph_facts:
+                for cited in re.findall(r"\[([^\]]+)\]$", fact):
+                    if cited not in citations:
+                        citations.append(cited)
+            data_points.citations = citations
         extra_info = ExtraInfo(
             data_points,
             thoughts=[
@@ -413,11 +451,13 @@ class ChatReadRetrieveReadApproach(Approach):
                         "search_image_embeddings": search_image_embeddings,
                     },
                 ),
+                *graph_thoughts,
                 ThoughtStep(
                     "Search results",
                     [result.serialize_for_results() for result in results],
                 ),
             ],
+            graph_facts=graph_facts,
         )
         return extra_info
 

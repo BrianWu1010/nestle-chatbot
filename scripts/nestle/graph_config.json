@@ -1,7 +1,7 @@
 {
   "base_url": "https://www.madewithnestle.ca",
   "manifest_path": "scrape_output/nestle/manifest.json",
-  "output_path": "scrape_output/nestle/graph.json",
+  "output_path": "app/backend/graphrag/data/nestle_graph.json",
   "non_brand_sections": [
     "help",
     "holiday-favourites",

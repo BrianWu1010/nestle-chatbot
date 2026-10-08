@@ -329,6 +329,11 @@ param useSpeechOutputBrowser bool = false
 param useSpeechOutputAzure bool = false
 @description('Use chat history feature in browser')
 param useChatHistoryBrowser bool = false
+@description('Use the GraphRAG knowledge graph to expand retrieval')
+param useGraphRag bool = true
+@secure()
+@description('Admin key required to add nodes/edges via the /graph API; writes are disabled when empty')
+param graphAdminKey string = ''
 @description('Use chat history feature in CosmosDB')
 param useChatHistoryCosmos bool = false
 @description('Show options to use vector embeddings for searching in the app UI')
@@ -509,6 +514,9 @@ var appEnvVariables = {
   USE_AGENTIC_KNOWLEDGEBASE: useAgenticKnowledgeBase
   // Chat history settings
   USE_CHAT_HISTORY_BROWSER: useChatHistoryBrowser
+  // GraphRAG settings
+  USE_GRAPHRAG: useGraphRag
+  GRAPH_ADMIN_KEY: graphAdminKey
   USE_CHAT_HISTORY_COSMOS: useChatHistoryCosmos
   AZURE_COSMOSDB_ACCOUNT: (useAuthentication && useChatHistoryCosmos) ? cosmosDb!.outputs.name : ''
   AZURE_CHAT_HISTORY_DATABASE: chatHistoryDatabaseName
