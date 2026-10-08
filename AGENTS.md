@@ -62,6 +62,7 @@ If necessary, edit this file to ensure it accurately reflects the current state 
   * evals/results_summaries: Contains derived grouped summaries such as `baseline.json` and `baseline.md`.
   * evals/results_comparisons: Reserved for derived candidate-vs-baseline comparison artifacts.
   * evals/eval_compare.py: Compares eval result folders and reports averages, confidence intervals, and paired significance tests.
+  * evals/nestle_smoke.py: Smoke eval against a running app (questions in `evals/nestle_smoke_questions.json`), comparing GraphRAG off/on for citations, keywords and off-topic refusals. Writes `evals/results/nestle-smoke/results.jsonl` and `evals/results_summaries/nestle_smoke.md`. Use `--rescore` to re-score saved results without calling the app.
 * tests: Contains the test code, including e2e tests, app integration tests, and unit tests.
 * scripts/nestle: Made with Nestlé scraper and refresh workflow.
   * scripts/nestle/scrape.py: Crawls madewithnestle.ca (sitemap + allowlist), saves raw HTML to `scrape_output/nestle/raw/` (gitignored) and clean Markdown to `data/nestle/`, plus `scrape_output/nestle/manifest.json`.

@@ -754,6 +754,7 @@ async def setup_clients():
         use_sharepoint_source=current_app.config[CONFIG_SHAREPOINT_SOURCE_ENABLED],
         retrieval_reasoning_effort=AGENTIC_KNOWLEDGEBASE_REASONING_EFFORT,
         graph_retriever=graph_retriever,
+        semantic_ranker_enabled=current_app.config[CONFIG_SEMANTIC_RANKER_DEPLOYED],
     )
 
 
