@@ -10,3 +10,5 @@ cd "$(dirname "$0")/../.."
 ./.venv/bin/python ./scripts/nestle/scrape.py "$@"
 ./.venv/bin/python ./scripts/nestle/extract_entities.py
 ./scripts/prepdocs.sh
+
+echo "Index updated. Run 'azd deploy backend' to ship the rebuilt graph to the deployed app."

@@ -127,13 +127,15 @@ Build these **stages** so each can be improved later without rewriting the app:
 
 ### Done checklist — rest / submit when all true
 
-- [ ] Live Azure URL works without your laptop  
-- [ ] README has setup, stack, GraphRAG how-to-extend, limitations, demo URL  
-- [ ] Deployed chat answers Nestlé questions with sources  
-- [ ] GraphRAG present + documented as extendable  
-- [ ] Pop-out name/icon works on deploy  
-- [ ] Refresh workflow written (manual is OK)  
-- [ ] Repo pushed; both links shareable  
+- [x] Live Azure URL works without your laptop  
+- [x] README has setup, stack, GraphRAG how-to-extend, limitations, demo URL  
+- [x] Deployed chat answers Nestlé questions with sources  
+- [x] GraphRAG present + documented as extendable  
+- [x] Pop-out name/icon works on deploy  
+- [x] Refresh workflow written (manual is OK)  
+- [x] Repo pushed; both links shareable  
+
+Submission links: repo <https://github.com/BrianWu1010/nestle-chatbot> (public) · live app <https://app-backend-u6t5hmjsg6see.azurewebsites.net/>. Smoke eval: `evals/results_summaries/nestle_smoke.md`.
 
 **Rest signal:** You would be fine if a reviewer only spent 5 minutes clicking around.
 

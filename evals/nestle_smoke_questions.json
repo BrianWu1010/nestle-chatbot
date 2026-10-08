@@ -1,0 +1,20 @@
+[
+    {"question": "What can I make with Carnation hot chocolate?", "source_prefixes": ["carnation"], "keywords": ["carnation"]},
+    {"question": "What flavours of AERO bars are there?", "source_prefixes": ["aero"], "keywords": ["peppermint"]},
+    {"question": "Does KIT KAT contain peanuts?", "source_prefixes": ["kit-kat"], "keywords": ["peanut"]},
+    {"question": "Which KIT KAT products may contain peanuts?", "source_prefixes": ["kit-kat"], "keywords": ["peanut"]},
+    {"question": "What are the ingredients in a SMARTIES box?", "source_prefixes": ["smarties"], "keywords": ["sugar"]},
+    {"question": "Give me a recipe that uses KIT KAT.", "source_prefixes": ["nestle-snack-size", "kit-kat"], "keywords": ["kit"]},
+    {"question": "What Häagen-Dazs ice cream flavours are available?", "source_prefixes": ["haagen-dazs"], "keywords": ["vanilla"]},
+    {"question": "What is BOOST and who is it for?", "source_prefixes": ["boost"], "keywords": ["boost"]},
+    {"question": "Which NESCAFÉ instant coffees are sold in Canada?", "source_prefixes": ["nescafe"], "keywords": ["nescaf"]},
+    {"question": "What flavours does COFFEE MATE creamer come in?", "source_prefixes": ["coffee-mate"], "keywords": ["vanilla"]},
+    {"question": "Do DRUMSTICK cones contain nuts?", "source_prefixes": ["drumstick"], "keywords": ["nut"]},
+    {"question": "What TURTLES products are there?", "source_prefixes": ["turtles"], "keywords": ["turtles"]},
+    {"question": "How do I contact Nestlé Canada consumer services?", "source_prefixes": ["help", "contact"], "keywords": ["1-800"]},
+    {"question": "What MAGGI products can I cook with?", "source_prefixes": ["maggi"], "keywords": ["maggi"]},
+    {"question": "What is the capital of France?", "out_of_scope": true},
+    {"question": "How do I fix a flat bicycle tire?", "out_of_scope": true},
+    {"question": "What is Nestlé's share price today?", "out_of_scope": true},
+    {"question": "Who won the 2022 FIFA World Cup?", "out_of_scope": true}
+]
