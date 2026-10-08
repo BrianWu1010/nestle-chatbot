@@ -21,7 +21,7 @@ import time
 from pathlib import Path
 from urllib.parse import urlparse
 
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Tag
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_CONFIG = Path(__file__).with_name("scrape_config.json")
@@ -68,12 +68,13 @@ def extract_markdown(html: str, url: str) -> tuple[str, str] | None:
     soup = BeautifulSoup(html, "html.parser")
     title = (soup.title.string or "").strip() if soup.title else ""
     description_tag = soup.find("meta", attrs={"name": "description"})
-    description = description_tag.get("content", "").strip() if description_tag else ""
+    description = str(description_tag.get("content") or "").strip() if isinstance(description_tag, Tag) else ""
 
-    body = soup.find("main") or soup.body
+    main = soup.find("main")
+    body = main if isinstance(main, Tag) else soup.body
     if body is None:
         return None
-    for tag in body(REMOVE_TAGS):
+    for tag in body.find_all(REMOVE_TAGS):
         tag.decompose()
     for tag in body.find_all(True):
         if tag.decomposed:
