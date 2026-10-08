@@ -98,13 +98,13 @@ Build these **stages** so each can be improved later without rewriting the app:
 
 ### Done checklist — rest when all true
 
-- [ ] Graph contains real Nestlé entities (at least product ↔ recipe)  
-- [ ] At least one question path uses graph expansion then RAG  
-- [ ] Add node/relationship works via API or simple UI  
-- [ ] README/docs note: how to add entity types and edges  
-- [ ] Pop-out chatbot with custom name/icon  
-- [ ] Citations still work  
-- [ ] Day 2 committed  
+- [x] Graph contains real Nestlé entities (at least product ↔ recipe)  
+- [x] At least one question path uses graph expansion then RAG  
+- [x] Add node/relationship works via API or simple UI  
+- [x] README/docs note: how to add entity types and edges  
+- [x] Pop-out chatbot with custom name/icon  
+- [x] Citations still work  
+- [x] Day 2 committed  
 
 **Rest signal:** GraphRAG is a module others can extend; UI shell exists.
 
