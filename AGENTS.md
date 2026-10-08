@@ -52,7 +52,7 @@ If necessary, edit this file to ensure it accurately reflects the current state 
       * app/frontend/src/locales/it/translation.json: Italian translations
       * app/frontend/src/locales/ja/translation.json: Japanese translations
       * app/frontend/src/locales/nl/translation.json: Dutch translations
- * app/frontend/src/locales/pl/translation.json: Polish translations
+      * app/frontend/src/locales/pl/translation.json: Polish translations
       * app/frontend/src/locales/ptBR/translation.json: Portuguese translations
       * app/frontend/src/locales/tr/translation.json: Turkish translations
     * app/frontend/src/pages: Contains the main pages of the application
@@ -64,18 +64,18 @@ If necessary, edit this file to ensure it accurately reflects the current state 
   * evals/eval_compare.py: Compares eval result folders and reports averages, confidence intervals, and paired significance tests.
 * tests: Contains the test code, including e2e tests, app integration tests, and unit tests.
 * scripts/nestle: Made with Nestlé scraper and refresh workflow.
- * scripts/nestle/scrape.py: Crawls madewithnestle.ca (sitemap + allowlist), saves raw HTML to `scrape_output/nestle/raw/` (gitignored) and clean Markdown to `data/nestle/`, plus `scrape_output/nestle/manifest.json`.
- * scripts/nestle/scrape_config.json: Base URL, allow/deny patterns, rate limit, max pages, output folders.
- * scripts/nestle/extract_entities.py: Builds the knowledge graph (Brand, Product, Recipe, Ingredient, Allergen nodes and their edges) from `data/nestle/` + raw HTML, writing `scrape_output/nestle/graph.json`. Rule-based, no LLM calls.
- * scripts/nestle/graph_config.json: Brand display names/aliases, non-brand sections, and the allergen whitelist used by extraction.
- * scripts/nestle/refresh.sh: Re-scrape, rebuild the graph, and re-ingest in one command.
+  * scripts/nestle/scrape.py: Crawls madewithnestle.ca (sitemap + allowlist), saves raw HTML to `scrape_output/nestle/raw/` (gitignored) and clean Markdown to `data/nestle/`, plus `scrape_output/nestle/manifest.json`.
+  * scripts/nestle/scrape_config.json: Base URL, allow/deny patterns, rate limit, max pages, output folders.
+  * scripts/nestle/extract_entities.py: Builds the knowledge graph (Brand, Product, Recipe, Ingredient, Allergen nodes and their edges) from `data/nestle/` + raw HTML, writing `scrape_output/nestle/graph.json`. Rule-based, no LLM calls.
+  * scripts/nestle/graph_config.json: Brand display names/aliases, non-brand sections, and the allergen whitelist used by extraction.
+  * scripts/nestle/refresh.sh: Re-scrape, rebuild the graph, and re-ingest in one command.
 * app/backend/graphrag: GraphRAG module.
- * app/backend/graphrag/schema.py: `Node`, `Edge`, `KnowledgeGraph` (JSON save/load, neighbors) and the allowed `NODE_TYPES` / `EDGE_TYPES`.
- * app/backend/graphrag/extract.py: Pluggable extractors (`EXTRACTORS` list). To add an entity type: register it in `schema.py`, write an extractor `(page, ctx) -> None`, append it to `EXTRACTORS`, and add a test in `tests/test_graphrag_extract.py`.
- * app/backend/graphrag/store.py: `GraphStore`, the in-memory graph loaded from `graphrag/data/nestle_graph.json` plus an overlay file for API additions. Swap point for a graph database.
- * app/backend/graphrag/retrieve.py: `GraphRetriever.expand()` matches seed entities in a question, intersects/expands neighbors, and returns facts + source files. Used by `chatreadretrieveread.py` when the `use_graph` override is on (default) to run an extra search restricted to those files and add "Knowledge graph facts" to `chat_answer.user.jinja2`.
- * app/backend/graphrag/api.py: `/graph` blueprint (stats, search, node lookup, add node/edge). Writes require `GRAPH_ADMIN_KEY`.
- * docs/graphrag.md: Schema, extension guide, API, and settings for the GraphRAG module.
+  * app/backend/graphrag/schema.py: `Node`, `Edge`, `KnowledgeGraph` (JSON save/load, neighbors) and the allowed `NODE_TYPES` / `EDGE_TYPES`.
+  * app/backend/graphrag/extract.py: Pluggable extractors (`EXTRACTORS` list). To add an entity type: register it in `schema.py`, write an extractor `(page, ctx) -> None`, append it to `EXTRACTORS`, and add a test in `tests/test_graphrag_extract.py`.
+  * app/backend/graphrag/store.py: `GraphStore`, the in-memory graph loaded from `graphrag/data/nestle_graph.json` plus an overlay file for API additions. Swap point for a graph database.
+  * app/backend/graphrag/retrieve.py: `GraphRetriever.expand()` matches seed entities in a question, intersects/expands neighbors, and returns facts + source files. Used by `chatreadretrieveread.py` when the `use_graph` override is on (default) to run an extra search restricted to those files and add "Knowledge graph facts" to `chat_answer.user.jinja2`.
+  * app/backend/graphrag/api.py: `/graph` blueprint (stats, search, node lookup, add node/edge). Writes require `GRAPH_ADMIN_KEY`.
+  * docs/graphrag.md: Schema, extension guide, API, and settings for the GraphRAG module.
 * app/frontend/src/assistantConfig.ts: Assistant name, tagline, icon, and colours (overridable with `VITE_ASSISTANT_*` env vars at build time).
 * app/frontend/src/components/ChatWidget: Pop-out chat launcher + panel that iframes `#/chat?embed=1` (the chat page without the site header).
 * app/frontend/src/pages/home: Landing page at `/` that hosts the chat widget. The full-page chat lives at `#/chat`; e2e tests navigate there.

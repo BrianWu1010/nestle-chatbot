@@ -3,6 +3,7 @@
         "default": true,
         "line-length": false,
         "table-column-style": false,
+        "MD024": { "siblings_only": true },
         "MD033": { "allowed_elements": ["br", "details", "summary"] }
     }
 }

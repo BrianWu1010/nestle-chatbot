@@ -38,7 +38,7 @@ Build these **stages** so each can be improved later without rewriting the app:
 [8] Refresh            →  re-run [1]→[3] (±[4]) on demand
 ```
 
-**Definition of “extendable” for this project**
+### Definition of “extendable” for this project
 
 | Stage | Minimum to ship | Extension point to leave behind |
 | --- | --- | --- |
