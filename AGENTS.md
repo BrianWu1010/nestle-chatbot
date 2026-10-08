@@ -70,6 +70,7 @@ If necessary, edit this file to ensure it accurately reflects the current state 
   * scripts/nestle/extract_entities.py: Builds the knowledge graph (Brand, Product, Recipe, Ingredient, Allergen nodes and their edges) from `data/nestle/` + raw HTML, writing `scrape_output/nestle/graph.json`. Rule-based, no LLM calls.
   * scripts/nestle/graph_config.json: Brand display names/aliases, non-brand sections, and the allergen whitelist used by extraction.
   * scripts/nestle/refresh.sh: Re-scrape, rebuild the graph, and re-ingest in one command.
+* scripts/record_demo.py: Records `docs/images/demo.gif` (embedded in the README) from the live site with Playwright + Pillow.
 * app/backend/graphrag: GraphRAG module.
   * app/backend/graphrag/schema.py: `Node`, `Edge`, `KnowledgeGraph` (JSON save/load, neighbors) and the allowed `NODE_TYPES` / `EDGE_TYPES`.
   * app/backend/graphrag/extract.py: Pluggable extractors (`EXTRACTORS` list). To add an entity type: register it in `schema.py`, write an extractor `(page, ctx) -> None`, append it to `EXTRACTORS`, and add a test in `tests/test_graphrag_extract.py`.
