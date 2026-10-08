@@ -35,10 +35,10 @@
     "chatEmptyStateTitle": "Chatta con i tuoi dati",
     "chatEmptyStateSubtitle": "Chiedi qualsiasi cosa o prova un esempio",
     "defaultExamples": {
-        "1": "Cosa è incluso nel mio piano Northwind Health Plus che non è nello standard?",
-        "2": "Cosa succede durante una valutazione delle prestazioni?",
-        "3": "Cosa fa un Product Manager?",
-        "placeholder": "Digita una nuova domanda (es. il mio piano copre gli esami oculistici annuali?)"
+        "1": "Cosa posso preparare con gli SMARTIES?",
+        "2": "Quali prodotti KIT KAT possono contenere arachidi?",
+        "3": "Quali ricette usano la salsa MAGGI Hot and Sweet?",
+        "placeholder": "Chiedi di un prodotto, una ricetta o un allergene Nestlé"
     },
     "askTitle": "Chiedi ai tuoi dati",
     "multimodalExamples": {
@@ -128,7 +128,8 @@
         },
         "useOidSecurityFilter": "Usa filtro di sicurezza oid",
         "useGroupsSecurityFilter": "Usa filtro di sicurezza di gruppo",
-        "shouldStream": "Trasmetti in streaming le risposte"
+        "shouldStream": "Trasmetti in streaming le risposte",
+        "useGraph": "Usa grafo della conoscenza (GraphRAG)"
     },
     "helpTexts": {
         "promptTemplate": "Sostituisce il prompt utilizzato per generare la risposta in base alla domanda e ai risultati della ricerca. Per aggiungere al prompt esistente invece di sostituire l'intero prompt, inizia il tuo prompt con '>>>'.",
@@ -154,7 +155,8 @@
         "useGroupsSecurityFilter": "Filtra i risultati di ricerca in base ai gruppi dell'utente autenticato.",
         "useAgenticKnowledgeBase": "Usa l'agentic retrieval da Azure AI Search per la pianificazione multi-query. Usa sempre il ranking semantico.",
         "useWebSource": "Arricchisci i risultati con la ricerca web in aggiunta al tuo set di dati indicizzati.",
-        "useSharePointSource": "Arricchisci il recupero con contenuto SharePoint insieme al tuo set di dati indicizzati."
+        "useSharePointSource": "Arricchisci il recupero con contenuto SharePoint insieme al tuo set di dati indicizzati.",
+        "useGraph": "Associa prodotti, ricette, marchi, ingredienti e allergeni della domanda al grafo della conoscenza e aggiunge ai risultati di ricerca fatti e pagine delle entità collegate."
     },
     "overallSettings": "Impostazioni generali",
     "searchSettings": "Impostazioni di ricerca",

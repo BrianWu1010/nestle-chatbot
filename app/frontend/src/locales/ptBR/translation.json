@@ -35,10 +35,10 @@
     "chatEmptyStateTitle": "Converse com seus dados",
     "chatEmptyStateSubtitle": "Pergunte qualquer coisa ou tente um exemplo",
     "defaultExamples": {
-        "1": "O que está incluído no meu plano Northwind Health Plus que não está no padrão?",
-        "2": "O que acontece em uma avaliação de desempenho?",
-        "3": "O que faz um Gerente de Produto?",
-        "placeholder": "Digite uma nova pergunta (por exemplo: Meu plano cobre exames oftalmológicos anuais?)"
+        "1": "O que posso fazer com SMARTIES?",
+        "2": "Quais produtos KIT KAT podem conter amendoim?",
+        "3": "Quais receitas usam o molho MAGGI Hot and Sweet?",
+        "placeholder": "Pergunte sobre um produto, receita ou alérgeno da Nestlé"
     },
     "askTitle": "Pergunte aos seus dados",
     "multimodalExamples": {
@@ -128,7 +128,8 @@
         },
         "useOidSecurityFilter": "Usar filtro de segurança oid",
         "useGroupsSecurityFilter": "Usar filtro de segurança de grupos",
-        "shouldStream": "Stream chat completion responses"
+        "shouldStream": "Stream chat completion responses",
+        "useGraph": "Usar grafo de conhecimento (GraphRAG)"
     },
     "helpTexts": {
         "promptTemplate": "Substitui o prompt usado para gerar a resposta com base na pergunta e nos resultados da pesquisa. Para adicionar ao prompt existente em vez de substituí-lo por completo, comece seu prompt com '>>>'.",
@@ -154,7 +155,8 @@
         "useGroupsSecurityFilter": "Filtra os resultados da pesquisa com base nos grupos do usuário autenticado.",
         "useAgenticKnowledgeBase": "Use a recuperação agêntica do Azure AI Search para planejamento de múltiplas consultas. Sempre usa o rankeador semântico.",
         "useWebSource": "Aumente a recuperação com resultados de pesquisa web junto com seu conjunto de dados indexado.",
-        "useSharePointSource": "Aumente a recuperação com conteúdo do SharePoint junto com seu conjunto de dados indexado."
+        "useSharePointSource": "Aumente a recuperação com conteúdo do SharePoint junto com seu conjunto de dados indexado.",
+        "useGraph": "Associa produtos, receitas, marcas, ingredientes e alérgenos da pergunta ao grafo de conhecimento e adiciona fatos e páginas de entidades vinculadas aos resultados da pesquisa."
     },
     "overallSettings": "Configurações gerais",
     "searchSettings": "Configurações de pesquisa",

@@ -52,6 +52,7 @@ If necessary, edit this file to ensure it accurately reflects the current state 
       * app/frontend/src/locales/it/translation.json: Italian translations
       * app/frontend/src/locales/ja/translation.json: Japanese translations
       * app/frontend/src/locales/nl/translation.json: Dutch translations
+ * app/frontend/src/locales/pl/translation.json: Polish translations
       * app/frontend/src/locales/ptBR/translation.json: Portuguese translations
       * app/frontend/src/locales/tr/translation.json: Turkish translations
     * app/frontend/src/pages: Contains the main pages of the application
@@ -71,6 +72,13 @@ If necessary, edit this file to ensure it accurately reflects the current state 
 * app/backend/graphrag: GraphRAG module.
  * app/backend/graphrag/schema.py: `Node`, `Edge`, `KnowledgeGraph` (JSON save/load, neighbors) and the allowed `NODE_TYPES` / `EDGE_TYPES`.
  * app/backend/graphrag/extract.py: Pluggable extractors (`EXTRACTORS` list). To add an entity type: register it in `schema.py`, write an extractor `(page, ctx) -> None`, append it to `EXTRACTORS`, and add a test in `tests/test_graphrag_extract.py`.
+ * app/backend/graphrag/store.py: `GraphStore`, the in-memory graph loaded from `graphrag/data/nestle_graph.json` plus an overlay file for API additions. Swap point for a graph database.
+ * app/backend/graphrag/retrieve.py: `GraphRetriever.expand()` matches seed entities in a question, intersects/expands neighbors, and returns facts + source files. Used by `chatreadretrieveread.py` when the `use_graph` override is on (default) to run an extra search restricted to those files and add "Knowledge graph facts" to `chat_answer.user.jinja2`.
+ * app/backend/graphrag/api.py: `/graph` blueprint (stats, search, node lookup, add node/edge). Writes require `GRAPH_ADMIN_KEY`.
+ * docs/graphrag.md: Schema, extension guide, API, and settings for the GraphRAG module.
+* app/frontend/src/assistantConfig.ts: Assistant name, tagline, icon, and colours (overridable with `VITE_ASSISTANT_*` env vars at build time).
+* app/frontend/src/components/ChatWidget: Pop-out chat launcher + panel that iframes `#/chat?embed=1` (the chat page without the site header).
+* app/frontend/src/pages/home: Landing page at `/` that hosts the chat widget. The full-page chat lives at `#/chat`; e2e tests navigate there.
 * data/nestle: Scraped Nestlé pages (one Markdown file per URL, each with a `Source URL:` line). This is the primary knowledge base.
 * samples/data: Original Zava/Northwind sample documents from the upstream template. Not ingested; kept for tests.
 

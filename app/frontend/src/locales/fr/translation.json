@@ -35,10 +35,10 @@
     "chatEmptyStateTitle": "Discutez avec vos données",
     "chatEmptyStateSubtitle": "Demandez n'importe quoi ou essayez un exemple",
     "defaultExamples": {
-        "1": "Qu'est-ce qui est inclus dans mon plan Northwind Health Plus qui n'est pas dans le standard?",
-        "2": "Qu'arrive-t-il lors d'un examen de performance?",
-        "3": "Qu'est-ce qu'un Product Manager fait?",
-        "placeholder": "Tapez une nouvelle question (par exemple, mon plan couvre-t-il les examens oculaires annuels?)"
+        "1": "Que puis-je cuisiner avec des SMARTIES?",
+        "2": "Quels produits KIT KAT peuvent contenir des arachides?",
+        "3": "Quelles recettes utilisent la sauce MAGGI Hot and Sweet?",
+        "placeholder": "Posez une question sur un produit, une recette ou un allergène Nestlé"
     },
     "askTitle": "Demandez à vos données",
     "multimodalExamples": {
@@ -128,7 +128,8 @@
         },
         "useOidSecurityFilter": "Utiliser le filtre de sécurité oid",
         "useGroupsSecurityFilter": "Utiliser le filtre de sécurité de groupe",
-        "shouldStream": "Diffuser en continu les réponses"
+        "shouldStream": "Diffuser en continu les réponses",
+        "useGraph": "Utiliser le graphe de connaissances (GraphRAG)"
     },
     "helpTexts": {
         "promptTemplate": "Remplace le prompt utilisé pour générer la réponse en fonction de la question et des résultats de la recherche. Pour ajouter à l'invite existante au lieu de remplacer l'invite entière, commencez votre invite par '>>>'.",
@@ -154,7 +155,8 @@
         "useGroupsSecurityFilter": "Filtrez les résultats de recherche en fonction des groupes de l'utilisateur authentifié.",
         "useAgenticKnowledgeBase": "Utilisez la récupération agentique d'Azure AI Search pour la planification multi-requêtes. Utilise toujours le classement sémantique.",
         "useWebSource": "Augmentez la récupération avec des résultats de recherche web parallèlement à votre ensemble de données indexé.",
-        "useSharePointSource": "Augmentez la récupération avec du contenu SharePoint parallèlement à votre ensemble de données indexé."
+        "useSharePointSource": "Augmentez la récupération avec du contenu SharePoint parallèlement à votre ensemble de données indexé.",
+        "useGraph": "Associe les produits, recettes, marques, ingrédients et allergènes de la question au graphe de connaissances, puis ajoute aux résultats de recherche les faits et pages des entités liées."
     },
     "overallSettings": "Paramètres généraux",
     "searchSettings": "Paramètres de recherche",

@@ -35,10 +35,10 @@
     "chatEmptyStateTitle": "データを用いてチャットを行います",
     "chatEmptyStateSubtitle": "ご自由にお問い合わせいただくか、もしくは下記のサンプルをお試しください",
     "defaultExamples": {
-        "1": "私が契約中の Northwind Health Plus の標準プランには何が含まれ、何が含まれないのですか？",
-        "2": "パフォーマンス・レビューで何を行いますか？",
-        "3": "プロダクトマネージャーの職務内容について教えてください。",
-        "placeholder": "新しい質問を入力してください (例：私の契約プランは年1回の眼科検診もカバーしていますか？)"
+        "1": "SMARTIESで何が作れますか？",
+        "2": "ピーナッツを含む可能性があるKIT KAT製品はどれですか？",
+        "3": "MAGGI Hot and Sweet Sauceを使うレシピは？",
+        "placeholder": "ネスレの製品、レシピ、アレルゲンについて質問してください"
     },
     "askTitle": "データを利用した問い合わせ",
     "multimodalExamples": {
@@ -128,7 +128,8 @@
         },
         "useOidSecurityFilter": "OIDセキュリティフィルターの使用",
         "useGroupsSecurityFilter": "グループセキュリティフィルターの使用",
-        "shouldStream": "ストリームでチャット応答を取得"
+        "shouldStream": "ストリームでチャット応答を取得",
+        "useGraph": "ナレッジグラフを使用 (GraphRAG)"
     },
     "helpTexts": {
         "promptTemplate": "質問や検索結果に基づいて回答を生成するためプロンプトを上書きします。既存のプロンプトに追加する場合、全てを置き換えるのではなく、プロンプトを'>>>'で始めてください。",
@@ -154,7 +155,8 @@
         "useGroupsSecurityFilter": "認証ユーザーのグループに基づいて検索結果をフィルタリングします。",
         "useAgenticKnowledgeBase": "Azure AI Search のエージェント型リトリーバルを使用してマルチクエリの計画を行います。常にセマンティック ランカーを使用します。",
         "useWebSource": "インデックス化されたデータセットと並行してWeb検索結果で検索を拡張します。",
-        "useSharePointSource": "インデックス化されたデータセットと並行してSharePointコンテンツで検索を拡張します。"
+        "useSharePointSource": "インデックス化されたデータセットと並行してSharePointコンテンツで検索を拡張します。",
+        "useGraph": "質問内の製品、レシピ、ブランド、原材料、アレルゲンをナレッジグラフと照合し、関連エンティティの事実とページを検索結果に追加します。"
     },
     "overallSettings": "全体設定",
     "searchSettings": "検索設定",

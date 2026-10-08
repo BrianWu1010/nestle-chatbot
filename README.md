@@ -124,6 +124,14 @@ Chatbot retrieval → grounded answer
 
 GraphRAG adds a second retrieval path for questions that need **relationships** (e.g. product ↔ recipe ↔ ingredient), not only similar text chunks.
 
+### GraphRAG
+
+A rule-based extractor turns the scraped pages into a graph of brands, products, recipes, ingredients and allergens (about 1,100 nodes and 8,000 edges). At question time, entities named in the question seed a neighbor expansion. For example, *"Which KIT KAT products may contain peanuts?"* intersects the KIT KAT brand with the peanuts allergen. The linked pages are pulled from the search index, and relationship facts with citations are added to the prompt. New entity types are one extractor function, and nodes or edges can be added through the `/graph` API without code changes. See [docs/graphrag.md](docs/graphrag.md).
+
+### Chat widget
+
+The site root shows a Made with Nestlé–styled landing page with a pop-out chat launcher (`app/frontend/src/components/ChatWidget`). The assistant's name, tagline, icon and colours come from `app/frontend/src/assistantConfig.ts` and can be overridden at build time with `VITE_ASSISTANT_NAME`, `VITE_ASSISTANT_TAGLINE`, `VITE_ASSISTANT_ICON_URL`, `VITE_ASSISTANT_PRIMARY_COLOR` and `VITE_ASSISTANT_ACCENT_COLOR`. The full-page chat is at `/#/chat`.
+
 ---
 
 ## Technology Stack

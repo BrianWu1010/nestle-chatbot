@@ -13,7 +13,7 @@ import {
 import { Dismiss24Regular } from "@fluentui/react-icons";
 import readNDJSONStream from "ndjson-readablestream";
 
-import appLogo from "../../assets/applogo.svg";
+import { assistantConfig } from "../../assistantConfig";
 import styles from "./Chat.module.css";
 
 import { chatApi, configApi, RetrievalMode, ChatAppResponse, ChatAppResponseOrError, ChatAppRequest, ResponseMessage, SpeechConfig } from "../../api";
@@ -57,6 +57,8 @@ const Chat = () => {
     const [includeCategory, setIncludeCategory] = useState<string>("");
     const [excludeCategory, setExcludeCategory] = useState<string>("");
     const [useSuggestFollowupQuestions, setUseSuggestFollowupQuestions] = useState<boolean>(false);
+    const [showGraphOption, setShowGraphOption] = useState<boolean>(false);
+    const [useGraph, setUseGraph] = useState<boolean>(true);
     const [searchTextEmbeddings, setSearchTextEmbeddings] = useState<boolean>(true);
     const [searchImageEmbeddings, setSearchImageEmbeddings] = useState<boolean>(false);
     const [sendTextSources, setSendTextSources] = useState<boolean>(true);
@@ -143,6 +145,7 @@ const Chat = () => {
             setShowChatHistoryBrowser(config.showChatHistoryBrowser);
             setShowChatHistoryCosmos(config.showChatHistoryCosmos);
             setShowAgenticRetrievalOption(config.showAgenticRetrievalOption);
+            setShowGraphOption(!!config.showGraphOption);
             setUseAgenticRetrieval(config.showAgenticRetrievalOption);
             setWebSourceSupported(config.webSourceEnabled);
             setWebSourceEnabled(config.webSourceEnabled);
@@ -290,6 +293,7 @@ const Chat = () => {
                         query_rewriting: useQueryRewriting,
                         reasoning_effort: reasoningEffort,
                         suggest_followup_questions: useSuggestFollowupQuestions,
+                        use_graph: useGraph,
                         search_text_embeddings: searchTextEmbeddings,
                         search_image_embeddings: searchImageEmbeddings,
                         send_text_sources: sendTextSources,
@@ -436,6 +440,9 @@ const Chat = () => {
                     setShouldStream(normalizedShouldStream);
                 }
                 break;
+            case "useGraph":
+                setUseGraph(value);
+                break;
             case "useSuggestFollowupQuestions":
                 setUseSuggestFollowupQuestions(value);
                 break;
@@ -535,7 +542,7 @@ const Chat = () => {
         <div className={styles.container}>
             {/* Setting the page title using react-helmet-async */}
             <Helmet>
-                <title>{t("pageTitle")}</title>
+                <title>{assistantConfig.name}</title>
             </Helmet>
             <div className={styles.commandsSplitContainer}>
                 <div className={styles.commandsContainer}>
@@ -553,10 +560,10 @@ const Chat = () => {
                 <div className={styles.chatContainer}>
                     {!lastQuestionRef.current ? (
                         <div className={styles.chatEmptyState}>
-                            <img src={appLogo} alt="App logo" width="120" height="120" />
+                            <img src={assistantConfig.iconUrl} alt="" width="96" height="96" />
 
-                            <h1 className={styles.chatEmptyStateTitle}>{t("chatEmptyStateTitle")}</h1>
-                            <h2 className={styles.chatEmptyStateSubtitle}>{t("chatEmptyStateSubtitle")}</h2>
+                            <h1 className={styles.chatEmptyStateTitle}>{assistantConfig.name}</h1>
+                            <h2 className={styles.chatEmptyStateSubtitle}>{assistantConfig.tagline}</h2>
                             {showLanguagePicker && <LanguagePicker onLanguageChange={newLang => i18n.changeLanguage(newLang)} />}
 
                             <ExampleList onExampleClicked={onExampleClicked} useMultimodalAnswering={showMultimodalOptions} />
@@ -724,6 +731,8 @@ const Chat = () => {
                             shouldStream={shouldStream}
                             streamingEnabled={streamingEnabled}
                             useSuggestFollowupQuestions={useSuggestFollowupQuestions}
+                            showGraphOption={showGraphOption}
+                            useGraph={useGraph}
                             showAgenticRetrievalOption={showAgenticRetrievalOption}
                             useAgenticKnowledgeBase={useAgenticKnowledgeBase}
                             useWebSource={webSourceEnabled}

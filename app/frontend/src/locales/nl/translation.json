@@ -35,10 +35,10 @@
     "chatEmptyStateTitle": "Chat met je gegevens",
     "chatEmptyStateSubtitle": "Stel een vraag of probeer een voorbeeld",
     "defaultExamples": {
-        "1": "Wat zit er in mijn Northwind Health Plus-pakket dat niet in het standaardpakket zit?",
-        "2": "Wat gebeurt er tijdens een functioneringsgesprek?",
-        "3": "Wat doet een Product Manager?",
-        "placeholder": "Typ een nieuwe vraag (bijv. dekt mijn pakket jaarlijkse oogonderzoeken?)"
+        "1": "Wat kan ik maken met SMARTIES?",
+        "2": "Welke KIT KAT-producten kunnen pinda's bevatten?",
+        "3": "Welke recepten gebruiken MAGGI Hot and Sweet Sauce?",
+        "placeholder": "Stel een vraag over een Nestlé-product, recept of allergeen"
     },
     "askTitle": "Stel je vraag aan de data",
     "multimodalExamples": {
@@ -128,7 +128,8 @@
         },
         "useOidSecurityFilter": "OID-beveiligingsfilter gebruiken",
         "useGroupsSecurityFilter": "Groepsbeveiligingsfilter gebruiken",
-        "shouldStream": "Chat-antwoorden streamen"
+        "shouldStream": "Chat-antwoorden streamen",
+        "useGraph": "Kennisgraaf gebruiken (GraphRAG)"
     },
     "helpTexts": {
         "promptTemplate": "Overschrijft de prompt die wordt gebruikt om het antwoord te genereren op basis van de vraag en zoekresultaten. Om de bestaande prompt uit te breiden in plaats van te overschrijven, start je prompt met '>>>'",
@@ -154,7 +155,8 @@
         "useGroupsSecurityFilter": "Filtert zoekresultaten op basis van de groepen van de geauthenticeerde gebruiker.",
         "useAgenticKnowledgeBase": "Gebruik agentische retrieval van Azure AI Search voor meervoudige query-planning. Gebruikt altijd semantische rangschikking.",
         "useWebSource": "Breid retrieval uit met websearch resultaten naast je geïndexeerde dataset.",
-        "useSharePointSource": "Breid retrieval uit met SharePoint-inhoud naast je geïndexeerde dataset."
+        "useSharePointSource": "Breid retrieval uit met SharePoint-inhoud naast je geïndexeerde dataset.",
+        "useGraph": "Koppelt producten, recepten, merken, ingrediënten en allergenen in de vraag aan de kennisgraaf en voegt feiten en pagina's van gekoppelde entiteiten toe aan de zoekresultaten."
     },
     "overallSettings": "Algemene instellingen",
     "searchSettings": "Zoekinstellingen",

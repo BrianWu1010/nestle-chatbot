@@ -84,8 +84,26 @@ def sized_page(page: Page, request):
 
 
 def test_home(page: Page, live_server_url: str):
+    page.goto(f"{live_server_url}/#/chat")
+    expect(page).to_have_title("Nessie")
+
+
+def test_landing_page_chat_widget(page: Page, live_server_url: str):
     page.goto(live_server_url)
-    expect(page).to_have_title("Azure OpenAI + AI Search")
+    expect(page).to_have_title("Nessie | Made with Nestlé")
+    expect(page.get_by_role("heading", name="Good food, good questions.")).to_be_visible()
+
+    launcher = page.get_by_role("button", name="Open Nessie chat")
+    expect(launcher).to_be_visible()
+    launcher.click()
+    expect(page.get_by_role("region", name="Nessie chat")).to_be_visible()
+    frame = page.frame_locator("iframe[title='Nessie chat']")
+    expect(frame.get_by_role("heading", name="Nessie", level=1)).to_be_visible()
+    # Embedded chat hides the full-page header; the widget draws its own.
+    expect(frame.get_by_role("banner")).to_have_count(0)
+
+    page.get_by_role("button", name="Close chat").click()
+    expect(launcher).to_be_visible()
 
 
 def test_chat(sized_page: Page, live_server_url: str):
@@ -118,9 +136,9 @@ def test_chat(sized_page: Page, live_server_url: str):
     page.route("*/**/chat/stream", handle)
 
     # Check initial page state
-    page.goto(live_server_url)
-    expect(page).to_have_title("Azure OpenAI + AI Search")
-    expect(page.get_by_role("heading", name="Chat with your data")).to_be_visible()
+    page.goto(f"{live_server_url}/#/chat")
+    expect(page).to_have_title("Nessie")
+    expect(page.get_by_role("heading", name="Nessie", level=1)).to_be_visible()
     expect(page.get_by_role("button", name="Clear chat")).to_be_disabled()
     expect(page.get_by_role("button", name="Developer settings")).to_be_enabled()
 
@@ -131,10 +149,8 @@ def test_chat(sized_page: Page, live_server_url: str):
     assert results.violations_count == 0, results.generate_report()
 
     # Ask a question and wait for the message to appear
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").click()
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").fill(
-        "Whats the dental plan?"
-    )
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").click()
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").fill("Whats the dental plan?")
     page.get_by_role("button", name="Submit question").click()
 
     expect(page.get_by_text("Whats the dental plan?")).to_be_visible()
@@ -182,18 +198,16 @@ def test_chat_stop_button_visibility(page: Page, live_server_url: str):
     page.route("*/**/chat/stream", handle)
 
     # Check initial page state
-    page.goto(live_server_url)
-    expect(page).to_have_title("Azure OpenAI + AI Search")
+    page.goto(f"{live_server_url}/#/chat")
+    expect(page).to_have_title("Nessie")
 
     # Verify the submit button is visible initially (not the stop button)
     expect(page.get_by_label("Submit question")).to_be_visible()
     expect(page.get_by_label("Stop streaming")).not_to_be_visible()
 
     # Ask a question
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").click()
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").fill(
-        "Whats the dental plan?"
-    )
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").click()
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").fill("Whats the dental plan?")
     page.get_by_label("Submit question").click()
 
     # Wait for the response to complete and verify the submit button is back
@@ -219,11 +233,11 @@ def test_chat_stop_restores_question(page: Page, live_server_url: str):
     page.route("*/**/chat/stream", handle)
 
     # Check initial page state
-    page.goto(live_server_url)
-    expect(page).to_have_title("Azure OpenAI + AI Search")
+    page.goto(f"{live_server_url}/#/chat")
+    expect(page).to_have_title("Nessie")
 
     # Type a question
-    question_input = page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)")
+    question_input = page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen")
     question_input.click()
     question_input.fill("Whats the dental plan?")
 
@@ -273,8 +287,8 @@ def test_chat_customization(page: Page, live_server_url: str):
     page.route("*/**/chat", handle)
 
     # Check initial page state
-    page.goto(live_server_url)
-    expect(page).to_have_title("Azure OpenAI + AI Search")
+    page.goto(f"{live_server_url}/#/chat")
+    expect(page).to_have_title("Nessie")
 
     # Customize all the settings
     page.get_by_role("button", name="Developer settings").click()
@@ -301,10 +315,8 @@ def test_chat_customization(page: Page, live_server_url: str):
     page.locator("button").filter(has_text="Close").click()
 
     # Ask a question and wait for the message to appear
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").click()
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").fill(
-        "Whats the dental plan?"
-    )
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").click()
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").fill("Whats the dental plan?")
     page.get_by_role("button", name="Submit question").click()
 
     expect(page.get_by_text("Whats the dental plan?")).to_be_visible()
@@ -374,8 +386,8 @@ def test_chat_customization_multimodal(page: Page, live_server_url: str):
     page.route("*/**/chat", handle_chat)
 
     # Check initial page state
-    page.goto(live_server_url)
-    expect(page).to_have_title("Azure OpenAI + AI Search")
+    page.goto(f"{live_server_url}/#/chat")
+    expect(page).to_have_title("Nessie")
 
     # Open Developer settings
     page.get_by_role("button", name="Developer settings").click()
@@ -403,10 +415,8 @@ def test_chat_customization_multimodal(page: Page, live_server_url: str):
     page.locator("button").filter(has_text="Close").click()
 
     # Ask a question and wait for the message to appear
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").click()
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").fill(
-        "Whats the dental plan?"
-    )
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").click()
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").fill("Whats the dental plan?")
     page.get_by_label("Submit question").click()
 
 
@@ -422,18 +432,16 @@ def test_chat_nonstreaming(page: Page, live_server_url: str):
     page.route("*/**/chat", handle)
 
     # Check initial page state
-    page.goto(live_server_url)
-    expect(page).to_have_title("Azure OpenAI + AI Search")
+    page.goto(f"{live_server_url}/#/chat")
+    expect(page).to_have_title("Nessie")
     expect(page.get_by_role("button", name="Developer settings")).to_be_enabled()
     page.get_by_role("button", name="Developer settings").click()
     page.get_by_text("Stream chat completion responses").click()
     page.locator("button").filter(has_text="Close").click()
 
     # Ask a question and wait for the message to appear
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").click()
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").fill(
-        "Whats the dental plan?"
-    )
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").click()
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").fill("Whats the dental plan?")
     page.get_by_label("Submit question").click()
 
     expect(page.get_by_text("Whats the dental plan?")).to_be_visible()
@@ -461,18 +469,16 @@ def test_chat_followup_streaming(page: Page, live_server_url: str):
     page.route("*/**/chat/stream", handle)
 
     # Check initial page state
-    page.goto(live_server_url)
-    expect(page).to_have_title("Azure OpenAI + AI Search")
+    page.goto(f"{live_server_url}/#/chat")
+    expect(page).to_have_title("Nessie")
     expect(page.get_by_role("button", name="Developer settings")).to_be_enabled()
     page.get_by_role("button", name="Developer settings").click()
     page.get_by_text("Suggest follow-up questions").click()
     page.locator("button").filter(has_text="Close").click()
 
     # Ask a question and wait for the message to appear
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").click()
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").fill(
-        "Whats the dental plan?"
-    )
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").click()
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").fill("Whats the dental plan?")
     page.get_by_label("Submit question").click()
 
     expect(page.get_by_text("Whats the dental plan?")).to_be_visible()
@@ -498,8 +504,8 @@ def test_chat_followup_nonstreaming(page: Page, live_server_url: str):
     page.route("*/**/chat", handle)
 
     # Check initial page state
-    page.goto(live_server_url)
-    expect(page).to_have_title("Azure OpenAI + AI Search")
+    page.goto(f"{live_server_url}/#/chat")
+    expect(page).to_have_title("Nessie")
     expect(page.get_by_role("button", name="Developer settings")).to_be_enabled()
     page.get_by_role("button", name="Developer settings").click()
     page.get_by_text("Stream chat completion responses").click()
@@ -507,10 +513,8 @@ def test_chat_followup_nonstreaming(page: Page, live_server_url: str):
     page.locator("button").filter(has_text="Close").click()
 
     # Ask a question and wait for the message to appear
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").click()
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").fill(
-        "Whats the dental plan?"
-    )
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").click()
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").fill("Whats the dental plan?")
     page.get_by_label("Submit question").click()
 
     expect(page.get_by_text("Whats the dental plan?")).to_be_visible()
@@ -567,9 +571,9 @@ def test_upload_hidden(page: Page, live_server_url: str):
 
     page.route("*/**/config", handle_config)
 
-    page.goto(live_server_url)
+    page.goto(f"{live_server_url}/#/chat")
 
-    expect(page).to_have_title("Azure OpenAI + AI Search")
+    expect(page).to_have_title("Nessie")
 
     expect(page.get_by_role("button", name="Clear chat")).to_be_visible()
     expect(page.get_by_role("button", name="Manage file uploads")).not_to_be_visible()
@@ -618,9 +622,9 @@ def test_upload_disabled(page: Page, live_server_url: str):
 
     page.route("*/**/config", handle_config)
 
-    page.goto(live_server_url)
+    page.goto(f"{live_server_url}/#/chat")
 
-    expect(page).to_have_title("Azure OpenAI + AI Search")
+    expect(page).to_have_title("Nessie")
 
     expect(page.get_by_role("button", name="Manage file uploads")).to_be_visible()
     expect(page.get_by_role("button", name="Manage file uploads")).to_be_disabled()
@@ -691,8 +695,8 @@ def test_agentic_retrieval_effort_minimal_disables_web(page: Page, live_server_u
 
     page.route("*/**/config", handle_config)
 
-    page.goto(live_server_url)
-    expect(page).to_have_title("Azure OpenAI + AI Search")
+    page.goto(f"{live_server_url}/#/chat")
+    expect(page).to_have_title("Nessie")
 
     # Open Developer settings
     page.get_by_role("button", name="Developer settings").click()
@@ -728,10 +732,8 @@ def test_agentic_retrieval_effort_minimal_disables_web(page: Page, live_server_u
     page.locator("button").filter(has_text="Close").click()
 
     # Ask a question and wait for the message to appear
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").click()
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").fill(
-        "Whats the dental plan?"
-    )
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").click()
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").fill("Whats the dental plan?")
     page.get_by_role("button", name="Submit question").click()
 
     expect(page.get_by_text("Whats the dental plan?")).to_be_visible()
@@ -795,16 +797,14 @@ def test_agentic_retrieval_query_plan(page: Page, live_server_url: str):
 
     page.route("*/**/config", handle_config)
 
-    page.goto(live_server_url)
-    expect(page).to_have_title("Azure OpenAI + AI Search")
+    page.goto(f"{live_server_url}/#/chat")
+    expect(page).to_have_title("Nessie")
 
     # Ask a question and wait for the answer to appear. streamingEnabled=False in the config
     # forces the non-streaming /chat path (whose snapshot carries the query_plan), so no
     # Developer settings toggle is needed.
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").click()
-    page.get_by_placeholder("Type a new question (e.g. does my plan cover annual eye exams?)").fill(
-        "Whats the dental plan?"
-    )
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").click()
+    page.get_by_placeholder("Ask about a Nestlé product, recipe or allergen").fill("Whats the dental plan?")
     page.get_by_role("button", name="Submit question").click()
 
     expect(page.get_by_text("The capital of France is Paris.")).to_be_visible()
