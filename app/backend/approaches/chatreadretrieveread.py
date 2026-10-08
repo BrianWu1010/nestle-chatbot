@@ -68,8 +68,10 @@ class ChatReadRetrieveReadApproach(Approach):
         use_sharepoint_source: bool = False,
         retrieval_reasoning_effort: Optional[str] = None,
         graph_retriever: Optional[GraphRetriever] = None,
+        semantic_ranker_enabled: bool = True,
     ):
         self.graph_retriever = graph_retriever
+        self.semantic_ranker_enabled = semantic_ranker_enabled
         self.search_client = search_client
         self.search_index_name = search_index_name
         self.knowledgebase_model = knowledgebase_model
@@ -314,9 +316,10 @@ class ChatReadRetrieveReadApproach(Approach):
     ):
         use_text_search = overrides.get("retrieval_mode") in ["text", "hybrid", None]
         use_vector_search = overrides.get("retrieval_mode") in ["vectors", "hybrid", None]
-        use_semantic_ranker = True if overrides.get("semantic_ranker") else False
+        # Clients can send semantic options before /config tells them the service lacks the semantic ranker.
+        use_semantic_ranker = self.semantic_ranker_enabled and bool(overrides.get("semantic_ranker"))
         use_semantic_captions = True if overrides.get("semantic_captions") else False
-        use_query_rewriting = True if overrides.get("query_rewriting") else False
+        use_query_rewriting = use_semantic_ranker and bool(overrides.get("query_rewriting"))
         top = overrides.get("top", 5)
         minimum_search_score = overrides.get("minimum_search_score", 0.0)
         minimum_reranker_score = overrides.get("minimum_reranker_score", 0.0)

@@ -154,3 +154,28 @@ async def test_chat_uses_graph_expansion(graph_client):
     )
     result = await response.get_json()
     assert all(t["title"] != "Knowledge graph expansion" for t in result["context"]["thoughts"])
+
+
+@pytest.mark.asyncio
+async def test_chat_ignores_semantic_overrides_when_ranker_disabled(graph_client, monkeypatch):
+    from azure.search.documents.aio import SearchClient
+
+    from .conftest import mock_search
+
+    query_types = []
+
+    async def recording_search(self, *args, **kwargs):
+        query_types.append(kwargs.get("query_type"))
+        return await mock_search(self, *args, **kwargs)
+
+    monkeypatch.setattr(SearchClient, "search", recording_search)
+    graph_client.app.config["chat_approach"].semantic_ranker_enabled = False
+    response = await graph_client.post(
+        "/chat",
+        json={
+            "messages": [{"content": "Does KitKat contain peanuts?", "role": "user"}],
+            "context": {"overrides": {"semantic_ranker": True, "semantic_captions": True, "query_rewriting": True}},
+        },
+    )
+    assert response.status_code == 200
+    assert query_types and all(query_type is None for query_type in query_types)
