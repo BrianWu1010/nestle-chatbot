@@ -9,3 +9,11 @@ Sources:
 
 {% endfor %}
 {% endif %}
+{% if graph_facts %}
+
+Knowledge graph facts (relationships between Nestlé products, recipes, ingredients and allergens; each cites the page it came from, use those citations):
+
+{% for fact in graph_facts %}
+- {{ fact }}
+{% endfor %}
+{% endif %}

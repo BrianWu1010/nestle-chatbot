@@ -39,6 +39,8 @@ export interface SettingsProps {
     streamingEnabled?: boolean; // Only used in chat
     shouldStream?: boolean; // Only used in Chat
     useSuggestFollowupQuestions?: boolean; // Only used in Chat
+    showGraphOption?: boolean;
+    useGraph?: boolean;
     promptTemplatePrefix?: string;
     promptTemplateSuffix?: string;
     showAgenticRetrievalOption?: boolean;
@@ -82,6 +84,8 @@ export const Settings = ({
     streamingEnabled,
     shouldStream,
     useSuggestFollowupQuestions,
+    showGraphOption,
+    useGraph,
     promptTemplatePrefix,
     promptTemplateSuffix,
     showAgenticRetrievalOption,
@@ -128,6 +132,8 @@ export const Settings = ({
     const shouldStreamId = useId();
     const shouldStreamFieldId = useId();
     const suggestFollowupQuestionsId = useId();
+    const useGraphId = useId();
+    const useGraphFieldId = useId();
     const suggestFollowupQuestionsFieldId = useId();
 
     const webSourceDisablesStreamingAndFollowup = !!useWebSource;
@@ -177,6 +183,18 @@ export const Settings = ({
             )}
 
             <h3 className={styles.sectionHeader}>{t("searchSettings")}</h3>
+
+            {showGraphOption && (
+                <div className={styles.settingsCheckbox}>
+                    <Checkbox
+                        id={useGraphFieldId}
+                        checked={useGraph}
+                        onChange={(_ev, data) => onChange("useGraph", !!data.checked)}
+                        aria-labelledby={useGraphId}
+                    />
+                    <HelpCallout labelId={useGraphId} fieldId={useGraphFieldId} helpText={t("helpTexts.useGraph")} label={t("labels.useGraph")} />
+                </div>
+            )}
 
             {showAgenticRetrievalOption && (
                 <>

@@ -21,6 +21,7 @@ export type ChatAppRequestOverrides = {
     prompt_template_prefix?: string;
     prompt_template_suffix?: string;
     suggest_followup_questions?: boolean;
+    use_graph?: boolean;
     send_text_sources: boolean;
     send_image_sources: boolean;
     search_text_embeddings: boolean;
@@ -123,6 +124,7 @@ export type Config = {
     showChatHistoryBrowser: boolean;
     showChatHistoryCosmos: boolean;
     showAgenticRetrievalOption: boolean;
+    showGraphOption?: boolean;
     ragSearchTextEmbeddings: boolean;
     ragSearchImageEmbeddings: boolean;
     ragSendTextSources: boolean;

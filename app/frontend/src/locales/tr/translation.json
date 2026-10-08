@@ -35,10 +35,10 @@
     "chatEmptyStateTitle": "Verilerinizle sohbet edin",
     "chatEmptyStateSubtitle": "Bir soru sorun veya bir örnek deneyin",
     "defaultExamples": {
-        "1": "Northwind Health Plus planımda standart planda olmayan neler var?",
-        "2": "Performans değerlendirmesinde ne olur?",
-        "3": "Bir Ürün Yöneticisi ne yapar?",
-        "placeholder": "Yeni bir soru yazın (ör. planım yıllık göz muayenelerini kapsıyor mu?)"
+        "1": "SMARTIES ile ne yapabilirim?",
+        "2": "Hangi KIT KAT ürünleri yer fıstığı içerebilir?",
+        "3": "Hangi tariflerde MAGGI Hot and Sweet Sauce kullanılıyor?",
+        "placeholder": "Bir Nestlé ürünü, tarifi veya alerjeni hakkında soru sorun"
     },
     "askTitle": "Verilerinize sorun",
     "multimodalExamples": {
@@ -128,7 +128,8 @@
         },
         "useOidSecurityFilter": "OID güvenlik filtresini kullan",
         "useGroupsSecurityFilter": "Grup güvenlik filtresini kullan",
-        "shouldStream": "Sohbet yanıtlarını akış olarak gönder"
+        "shouldStream": "Sohbet yanıtlarını akış olarak gönder",
+        "useGraph": "Bilgi grafiğini kullan (GraphRAG)"
     },
     "helpTexts": {
         "promptTemplate": "Soru ve arama sonuçlarına dayalı olarak cevabı oluşturmak için kullanılan prompt'u geçersiz kılar. Mevcut prompt'u genişletmek yerine tamamını değiştirmek için prompt'unuza '>>>' ile başlayın.",
@@ -154,7 +155,8 @@
         "useGroupsSecurityFilter": "Kimliği doğrulanmış kullanıcının gruplarına göre arama sonuçlarını filtreler.",
         "useAgenticKnowledgeBase": "Çoklu sorgu planlaması için Azure AI Search'ten agent temelli getirimi kullanın. Her zaman semantik sıralayıcı kullanır.",
         "useWebSource": "İndekslenmiş veri setinizin yanı sıra web arama sonuçlarıyla getirimi genişletin.",
-        "useSharePointSource": "İndekslenmiş veri setinizin yanı sıra SharePoint içeriğiyle getirimi genişletin."
+        "useSharePointSource": "İndekslenmiş veri setinizin yanı sıra SharePoint içeriğiyle getirimi genişletin.",
+        "useGraph": "Sorudaki ürünleri, tarifleri, markaları, içerikleri ve alerjenleri bilgi grafiğiyle eşleştirir, ardından bağlantılı varlıklardan gelen bilgileri ve sayfaları arama sonuçlarına ekler."
     },
     "overallSettings": "Genel ayarlar",
     "searchSettings": "Arama ayarları",

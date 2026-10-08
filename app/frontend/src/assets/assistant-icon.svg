@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Assistant icon">
+  <circle cx="32" cy="32" r="32" fill="#fff7ec"/>
+  <path d="M18 27c-4 0-7-3-7-7s3-7 7-7c1 0 2 0 3 1 1-4 5-7 11-7s10 3 11 7c1-1 2-1 3-1 4 0 7 3 7 7s-3 7-7 7v4H18z" fill="#ffffff" stroke="#5b3a29" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="18" y="31" width="28" height="7" rx="2" fill="#d52b1e"/>
+  <path d="M17 42h30a4 4 0 0 1 4 4v3a4 4 0 0 1-4 4H28l-7 5v-5h-4a4 4 0 0 1-4-4v-3a4 4 0 0 1 4-4z" fill="#5b3a29"/>
+  <circle cx="25" cy="47.5" r="2" fill="#fff7ec"/>
+  <circle cx="32" cy="47.5" r="2" fill="#fff7ec"/>
+  <circle cx="39" cy="47.5" r="2" fill="#fff7ec"/>
+</svg>

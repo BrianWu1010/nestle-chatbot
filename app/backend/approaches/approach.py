@@ -195,6 +195,7 @@ class ExtraInfo:
     thoughts: list[ThoughtStep] = field(default_factory=list)
     followup_questions: Optional[list[Any]] = None
     answer: Optional[str] = None  # Only when web knowledge source is used
+    graph_facts: Optional[list[str]] = None  # Only when GraphRAG expansion found entities
 
 
 @dataclass
@@ -344,13 +345,12 @@ class Approach(ABC):
                     )
                 )
 
+            # Reranker scores only exist when the semantic ranker ran; without it the threshold would drop everything.
+            reranker_threshold = (minimum_reranker_score or 0) if use_semantic_ranker else 0
             qualified_documents = [
                 doc
                 for doc in documents
-                if (
-                    (doc.score or 0) >= (minimum_search_score or 0)
-                    and (doc.reranker_score or 0) >= (minimum_reranker_score or 0)
-                )
+                if ((doc.score or 0) >= (minimum_search_score or 0) and (doc.reranker_score or 0) >= reranker_threshold)
             ]
 
         return qualified_documents

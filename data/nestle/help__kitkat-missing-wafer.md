@@ -1,0 +1,21 @@
+# KIT KAT Missing Wafer FAQ | Nestlé CA
+
+Source URL: https://www.madewithnestle.ca/help/kitkat-missing-wafer.html
+Page type: help
+Brand section: help
+
+Summary: Nestle Canada certifies products as Kosher only when their ingredients, process and facility qualify. We use the Orthodox Union (OU) and COR. Look for the kosher symbol.
+
+## KITKAT® Missing Wafer
+
+#### Thursday, February 27, 2025
+
+This is not the break that you deserve! Our KITKAT® bars are nothing without their light, crispy wafer, and we sincerely apologize for the inconvenience you have experienced. Our top priority continues to be the quality and safety of our products, and we have several processes in place to help prevent situations like this from occurring. Every once in a while, our manufacturing equipment will experience a momentary malfunction that results in some KITKAT® bars to complete the production without their crispy wafers. We understand how disappointing this can be, and we want to assure you that our factory adheres to Good Manufacturing Practices to ensure our products are consistently produced and controlled. We have implemented both manual and digital inspections throughout our production process. These inspections are designed to catch any discrepancies and ensure that wafer-less bars do not make it to our consumers. However, there are rare instances where this can still happen.
+If your KITKAT® is missing its light and crispy wafer, which is arguably the best part, we want to know about it! Your feedback is invaluable to us, and it helps us improve our processes. To assist us in addressing this issue, we kindly ask that you share some product information with us. This information will be passed on to our Quality Assurance team for awareness and continuous improvements. If you still have the packaging on hand, please provide as many details as possible, including the following: • UPC (Bar Code #) • Manufacturing code (series of numbers, time stamp and best before date) • Store name and location where you made your purchase • Any relevant photo(s) Your satisfaction is important to us, and we appreciate your understanding as we work to uphold the excellence you expect from KITKAT®. Thank you for your continued support and loyalty to our brand.
+Promotional banner with descriptive content and call-to-action buttons. Use tab to navigate.
+
+### How can we help?
+
+Please provide us with more details, including product information, and we'll be happy to help.
+
+Source URL: https://www.madewithnestle.ca/help/kitkat-missing-wafer.html

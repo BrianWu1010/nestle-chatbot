@@ -9,17 +9,22 @@ import { AuthenticationResult, EventType, PublicClientApplication } from "@azure
 import "./index.css";
 
 import Chat from "./pages/chat/Chat";
+import Home from "./pages/home/Home";
 import LayoutWrapper from "./layoutWrapper";
 import i18next from "./i18n/config";
 import { msalConfig, useLogin } from "./authConfig";
 
 const router = createHashRouter([
     {
+        index: true,
+        element: <Home />
+    },
+    {
         path: "/",
         element: <LayoutWrapper />,
         children: [
             {
-                index: true,
+                path: "chat",
                 element: <Chat />
             },
             {

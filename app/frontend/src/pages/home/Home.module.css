@@ -1,0 +1,140 @@
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #2b1d14;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background:
+        radial-gradient(circle at 85% 15%, rgba(213, 43, 30, 0.12) 0, transparent 35%),
+        radial-gradient(circle at 10% 90%, rgba(91, 58, 41, 0.14) 0, transparent 40%), linear-gradient(160deg, #fff7ec 0%, #fbe9d4 55%, #f3d9bd 100%);
+}
+
+.topBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    background: var(--assistant-primary);
+    border-bottom: 5px solid var(--assistant-accent);
+}
+
+.wordmark {
+    color: #fff;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.topLink {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 999px;
+    padding: 6px 16px;
+}
+
+.topLink:hover,
+.topLink:focus-visible {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.hero {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 64px 40px 120px;
+    box-sizing: border-box;
+}
+
+.eyebrow {
+    margin: 0 0 12px;
+    color: var(--assistant-accent);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.heroTitle {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.05;
+    color: var(--assistant-primary);
+}
+
+.heroSubtitle {
+    max-width: 560px;
+    font-size: 19px;
+    line-height: 1.5;
+}
+
+.brandList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    margin: 24px 0 0;
+    list-style: none;
+}
+
+.brandChip {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid rgba(91, 58, 41, 0.2);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.ideaList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.ideaCard {
+    padding: 20px 24px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.85);
+    border-left: 6px solid var(--assistant-accent);
+    box-shadow: 0 6px 20px rgba(91, 58, 41, 0.12);
+}
+
+.ideaCard h2 {
+    margin: 0 0 6px;
+    font-size: 20px;
+    color: var(--assistant-primary);
+}
+
+.ideaCard p {
+    margin: 0;
+    line-height: 1.45;
+}
+
+.footer {
+    padding: 16px 40px;
+    font-size: 13px;
+    color: rgba(43, 29, 20, 0.75);
+}
+
+@media (max-width: 860px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 32px 20px 120px;
+    }
+
+    .topBar {
+        padding: 12px 20px;
+    }
+}

@@ -35,10 +35,10 @@
     "chatEmptyStateTitle": "Chat med dine data",
     "chatEmptyStateSubtitle": "Spørg om hvad som helst eller prøv et eksempel",
     "defaultExamples": {
-        "1": "Hvad er inkluderet i min Northwind Health Plus plan, som ikke er i standardplanen?",
-        "2": "Hvordan foregår en medarbejderevaluering?",
-        "3": "Hvad laver en produktchef?",
-        "placeholder": "Skriv et nyt spørgsmål (f.eks. dækker min plan årlige øjenundersøgelser?)"
+        "1": "Hvad kan jeg lave med SMARTIES?",
+        "2": "Hvilke KIT KAT-produkter kan indeholde jordnødder?",
+        "3": "Hvilke opskrifter bruger MAGGI Hot and Sweet Sauce?",
+        "placeholder": "Spørg om et Nestlé-produkt, en opskrift eller et allergen"
     },
     "askTitle": "Spørg til dine data",
     "multimodalExamples": {
@@ -128,7 +128,8 @@
         },
         "useOidSecurityFilter": "Brug oid sikkerhedsfilter",
         "useGroupsSecurityFilter": "Brug gruppe sikkerhedsfilter",
-        "shouldStream": "Stream chat svar"
+        "shouldStream": "Stream chat svar",
+        "useGraph": "Brug vidensgraf (GraphRAG)"
     },
     "helpTexts": {
         "promptTemplate": "Overskriver prompten brugt til at generere svaret baseret på spørgsmålet og søgeresultaterne. For at tilføje til eksisterende prompt i stedet for at erstatte hele prompten, start din prompt med '>>>'.",
@@ -154,7 +155,8 @@
         "useGroupsSecurityFilter": "Filtrér søgeresultater baseret på den godkendte brugers adgangsgrupper.",
         "useAgenticKnowledgeBase": "Brug agentisk hentning fra Azure AI Search til planlægning af flere forespørgsler. Bruger altid semantisk rangering.",
         "useWebSource": "Udvid hentning med websøgeresultater sammen med dit indekserede datasæt.",
-        "useSharePointSource": "Udvid hentning med SharePoint-indhold sammen med dit indekserede datasæt."
+        "useSharePointSource": "Udvid hentning med SharePoint-indhold sammen med dit indekserede datasæt.",
+        "useGraph": "Matcher produkter, opskrifter, mærker, ingredienser og allergener i spørgsmålet med vidensgrafen og tilføjer fakta og sider fra forbundne enheder til søgeresultaterne."
     },
     "overallSettings": "Overordnede indstillinger",
     "searchSettings": "Søgeindstillinger",

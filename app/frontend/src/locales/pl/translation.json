@@ -35,10 +35,10 @@
     "chatEmptyStateTitle": "Rozmawiaj ze swoimi danymi",
     "chatEmptyStateSubtitle": "Zapytaj o cokolwiek lub spróbuj przykładu",
     "defaultExamples": {
-        "1": "Co jest zawarte w moim planie Northwind Health Plus, czego nie ma w standardowym?",
-        "2": "Co się dzieje podczas oceny okresowej?",
-        "3": "Czym zajmuje się Product Manager?",
-        "placeholder": "Wpisz nowe pytanie (np. czy mój plan obejmuje coroczne badania wzroku?)"
+        "1": "Co mogę przygotować ze SMARTIES?",
+        "2": "Które produkty KIT KAT mogą zawierać orzeszki ziemne?",
+        "3": "Które przepisy wykorzystują sos MAGGI Hot and Sweet?",
+        "placeholder": "Zapytaj o produkt, przepis lub alergen Nestlé"
     },
     "askTitle": "Zapytaj swoje dane",
     "multimodalExamples": {
@@ -128,7 +128,8 @@
         },
         "useOidSecurityFilter": "Użyj filtra bezpieczeństwa OID",
         "useGroupsSecurityFilter": "Użyj filtra bezpieczeństwa grup",
-        "shouldStream": "Strumieniuj odpowiedzi czatu"
+        "shouldStream": "Strumieniuj odpowiedzi czatu",
+        "useGraph": "Użyj grafu wiedzy (GraphRAG)"
     },
     "helpTexts": {
         "promptTemplate": "Nadpisuje podpowiedź używaną do generowania odpowiedzi na podstawie pytania i wyników wyszukiwania. Aby dodać do istniejącej podpowiedzi zamiast zastępować ją w całości, rozpocznij swoją podpowiedź od '>>>'.",
@@ -154,7 +155,8 @@
         "useGroupsSecurityFilter": "Filtruj wyniki wyszukiwania na podstawie grup uwierzytelnionego użytkownika.",
         "useAgenticKnowledgeBase": "Użyj agentowego pobierania z Azure AI Search do planowania wielozapytaniowego. Zawsze używa semantycznego rankera.",
         "useWebSource": "Rozszerz pobieranie o wyniki wyszukiwania w sieci wraz z indeksowanym zestawem danych.",
-        "useSharePointSource": "Rozszerz pobieranie o zawartość SharePoint wraz z indeksowanym zestawem danych."
+        "useSharePointSource": "Rozszerz pobieranie o zawartość SharePoint wraz z indeksowanym zestawem danych.",
+        "useGraph": "Dopasowuje produkty, przepisy, marki, składniki i alergeny z pytania do grafu wiedzy, a następnie dodaje do wyników wyszukiwania fakty i strony powiązanych encji."
     },
     "overallSettings": "Overall settings",
     "searchSettings": "Search settings",

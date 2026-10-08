@@ -35,10 +35,10 @@
     "chatEmptyStateTitle": "Chatea con tus datos",
     "chatEmptyStateSubtitle": "Pregunta cualquier cosa o prueba un ejemplo",
     "defaultExamples": {
-        "1": "¿Qué está incluido en mi plan Northwind Health Plus que no está en el estándar?",
-        "2": "¿Qué sucede en una revisión de rendimiento?",
-        "3": "¿Qué hace un Gerente de producto?",
-        "placeholder": "Escribe una nueva pregunta (por ejemplo, ¿mi plan cubre exámenes anuales de la vista?)"
+        "1": "¿Qué puedo preparar con SMARTIES?",
+        "2": "¿Qué productos KIT KAT pueden contener cacahuetes?",
+        "3": "¿Qué recetas usan la salsa MAGGI Hot and Sweet?",
+        "placeholder": "Pregunta sobre un producto, receta o alérgeno de Nestlé"
     },
     "askTitle": "Pregunta a tus datos",
     "multimodalExamples": {
@@ -128,7 +128,8 @@
         },
         "useOidSecurityFilter": "Usar filtro de seguridad oid",
         "useGroupsSecurityFilter": "Usar filtro de seguridad degrupos",
-        "shouldStream": "Transmitir respuestas de finalización de chat en tiempo real"
+        "shouldStream": "Transmitir respuestas de finalización de chat en tiempo real",
+        "useGraph": "Usar grafo de conocimiento (GraphRAG)"
     },
     "helpTexts": {
         "promptTemplate": "Sobrescribe el aviso utilizado para generar la respuesta basada en la pregunta y los resultados de la búsqueda. Para agregar al aviso existente en lugar de reemplazar todo el aviso, comienza tu aviso con '>>>'.",
@@ -154,7 +155,8 @@
         "useGroupsSecurityFilter": "Filtra los resultados de búsqueda en función de los grupos del usuario autenticado.",
         "useAgenticKnowledgeBase": "Usa la recuperación agéntica de Azure AI Search para la planificación de consultas múltiples. Siempre utiliza el clasificador semántico.",
         "useWebSource": "Potencia la recuperación con resultados de búsqueda web junto con tu conjunto de datos indexado.",
-        "useSharePointSource": "Potencia la recuperación incorporando contenido de SharePoint junto con tu conjunto de datos indexado."
+        "useSharePointSource": "Potencia la recuperación incorporando contenido de SharePoint junto con tu conjunto de datos indexado.",
+        "useGraph": "Relaciona productos, recetas, marcas, ingredientes y alérgenos de la pregunta con el grafo de conocimiento y añade hechos y páginas de entidades vinculadas a los resultados de búsqueda."
     },
     "overallSettings": "Configuración general",
     "searchSettings": "Configuración de búsqueda",

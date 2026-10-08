@@ -260,6 +260,12 @@
     "useChatHistoryBrowser": {
       "value": "${USE_CHAT_HISTORY_BROWSER=false}"
     },
+    "useGraphRag": {
+      "value": "${USE_GRAPHRAG=true}"
+    },
+    "graphAdminKey": {
+      "value": "${GRAPH_ADMIN_KEY}"
+    },
     "useChatHistoryCosmos": {
       "value": "${USE_CHAT_HISTORY_COSMOS=false}"
     },
