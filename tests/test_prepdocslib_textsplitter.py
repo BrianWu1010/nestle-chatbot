@@ -44,7 +44,7 @@ def test_sentencetextsplitter_split_small_pages():
 async def test_sentencetextsplitter_list_parse_and_split(tmp_path, snapshot):
     text_splitter = SentenceTextSplitter()
     pdf_parser = LocalPdfParser()
-    for pdf in Path("data").glob("*.pdf"):
+    for pdf in Path("samples", "data").glob("*.pdf"):
         shutil.copy(str(pdf.absolute()), tmp_path)
 
     list_file_strategy = LocalListFileStrategy(path_pattern=str(tmp_path / "*"))

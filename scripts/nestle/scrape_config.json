@@ -1,0 +1,25 @@
+{
+  "base_url": "https://www.madewithnestle.ca",
+  "sitemap_url": "https://www.madewithnestle.ca/sitemap.xml",
+  "extra_urls": [],
+  "allow_patterns": [
+    "^https://www\\.madewithnestle\\.ca/[^?#]+\\.html$"
+  ],
+  "deny_patterns": [
+    "/sitemap\\.html$",
+    "/errors",
+    "/errors",
+    "/search",
+    "/contact-us",
+    "/privacy",
+    "/terms",
+    "/cookie"
+  ],
+  "max_pages": 800,
+  "delay_seconds": 1.0,
+  "page_timeout_ms": 45000,
+  "min_text_chars": 200,
+  "raw_dir": "scrape_output/nestle/raw",
+  "clean_dir": "data/nestle",
+  "manifest_path": "scrape_output/nestle/manifest.json"
+}

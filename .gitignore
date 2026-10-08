@@ -167,3 +167,6 @@ infra/main.test.json
 # Private Nestlé assessment brief — do not publish
 Nestle AI Technical Test.pdf
 Nestle_AI_Technical_Test.pdf
+
+# Nestlé scraper raw HTML cache
+scrape_output/**/raw/

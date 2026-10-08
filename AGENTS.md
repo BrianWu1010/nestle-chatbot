@@ -62,10 +62,18 @@ If necessary, edit this file to ensure it accurately reflects the current state 
   * evals/results_comparisons: Reserved for derived candidate-vs-baseline comparison artifacts.
   * evals/eval_compare.py: Compares eval result folders and reports averages, confidence intervals, and paired significance tests.
 * tests: Contains the test code, including e2e tests, app integration tests, and unit tests.
+* scripts/nestle: Made with Nestlé scraper and refresh workflow.
+ * scripts/nestle/scrape.py: Crawls madewithnestle.ca (sitemap + allowlist), saves raw HTML to `scrape_output/nestle/raw/` (gitignored) and clean Markdown to `data/nestle/`, plus `scrape_output/nestle/manifest.json`.
+ * scripts/nestle/scrape_config.json: Base URL, allow/deny patterns, rate limit, max pages, output folders.
+ * scripts/nestle/refresh.sh: Re-scrape and re-ingest in one command.
+* data/nestle: Scraped Nestlé pages (one Markdown file per URL, each with a `Source URL:` line). This is the primary knowledge base.
+* samples/data: Original Zava/Northwind sample documents from the upstream template. Not ingested; kept for tests.
 
 ## Adding new data
 
 New files should be added to the `data` folder, and then either run scripts/prepdocs.sh or scripts/prepdocs.ps1 to ingest the data.
+
+For Nestlé pages, run `./scripts/nestle/refresh.sh` (scrape + ingest). The site's bot protection blocks headless browsers, so the scraper opens a visible Chrome window (requires Google Chrome installed). Use `python scripts/nestle/scrape.py --from-cache` to re-extract Markdown from saved raw HTML without hitting the site. To scrape more sections, edit `allow_patterns` / `extra_urls` in `scripts/nestle/scrape_config.json`. Pages removed from the site are not removed from the index automatically; run `./.venv/bin/python app/backend/prepdocs.py './data/*' --removeall` and re-ingest for a clean rebuild.
 
 ## Adding a new azd environment variable
 
