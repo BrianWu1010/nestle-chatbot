@@ -6,6 +6,10 @@ A chat assistant that answers questions about [Made with Nestlé](https://www.ma
 
 > The demo runs on a free App Service plan, so the first request after a period of idleness can take 30–60 seconds while the app wakes up.
 
+![Demo: asking which KIT KAT products may contain peanuts, with cited source pages](docs/images/demo.gif)
+
+To re-record the demo after UI changes, run `python scripts/record_demo.py` (options: `--url`, `--question`, `--out`).
+
 Try:
 
 - *What can I make with Carnation hot chocolate?*
