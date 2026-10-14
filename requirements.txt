@@ -23,7 +23,7 @@ blinker==1.9.0
 certifi==2026.1.4
 cffi==2.0.0
 charset-normalizer==3.3.2
-click==8.4.2
+click==8.5.0
 cryptography==49.0.0
 distro==1.9.0
 dotenv-azd==0.3.0
@@ -43,7 +43,7 @@ itsdangerous==2.2.0
 Jinja2==3.1.6
 jiter==0.11.0
 markdown-it-py==3.0.0
-MarkupSafe==3.0.3
+MarkupSafe==3.0.4
 mdurl==0.1.2
 microsoft-kiota-abstractions==1.11.7
 microsoft-kiota-authentication-azure==1.11.7
@@ -93,7 +93,7 @@ PyJWT==2.13.0
 pymupdf==1.28.0
 pypdf==6.14.2
 python-dotenv==1.2.2
-Quart==0.20.0
+Quart==0.23.1
 quart-cors==0.7.0
 regex==2025.7.34
 requests==2.34.2
@@ -112,7 +112,7 @@ typing-inspection==0.4.2
 typing_extensions==4.15.0
 urllib3==2.7.0
 uvicorn==0.30.6
-Werkzeug==3.1.8
+Werkzeug==3.1.9
 wrapt==1.16.0
 wsproto==1.3.2
 yarl==1.17.2
